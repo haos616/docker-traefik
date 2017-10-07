@@ -1,16 +1,7 @@
 import os
-import random
 from hashlib import md5
 
 from jinja2 import Environment, FileSystemLoader
-
-
-def salt():
-    """Returns a string of 2 randome letters"""
-    letters = 'abcdefghijklmnopqrstuvwxyz' \
-              'ABCDEFGHIJKLMNOPQRSTUVWXYZ' \
-              '0123456789/.'
-    return random.choice(letters) + random.choice(letters)
 
 
 env = Environment(loader=FileSystemLoader('/usr/local/docker'))
