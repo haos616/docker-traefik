@@ -1,0 +1,25 @@
+version: "3"
+services:
+  traefik:
+    image: haos616/traefik:${TRAEFIK_VERSION}
+    environment:
+      - 'TRAEFIK_DOMAIN=localhost'
+      - 'TRAEFIK_ACME_EMAIL=haos616@gmail.com'
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8080:8080'
+    networks:
+      - web
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: traefik
+    build:
+      context: .
+      args:
+        - TRAEFIK_VERSION=${TRAEFIK_VERSION}
+
+networks:
+  web:
+    external: true
