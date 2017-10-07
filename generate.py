@@ -27,7 +27,6 @@ TRAEFIK_ACME_EMAIL = os.environ.get('TRAEFIK_ACME_EMAIL')
 TRAEFIK_WEB_PASSWORD = os.environ.get('TRAEFIK_WEB_PASSWORD', 'admin')
 TRAEFIK_WEB_USER = os.environ.get('TRAEFIK_WEB_USER', 'admin')
 
-# pwhash = crypt.crypt(TRAEFIK_WEB_PASSWORD, salt())
 pwhash = md5('{}:traefik:{}'.format(TRAEFIK_WEB_USER, TRAEFIK_WEB_PASSWORD)).hexdigest()
 web_users = ['{}:traefik:{}'.format(TRAEFIK_WEB_USER, pwhash)]
 
