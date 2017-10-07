@@ -1,13 +1,8 @@
 import os
-import sys
 import random
 from hashlib import md5
 
 from jinja2 import Environment, FileSystemLoader
-
-# We need a crypt module, but Windows doesn't have one by default.  Try to find
-# one, and tell the user if we can't.
-import crypt
 
 
 def salt():
